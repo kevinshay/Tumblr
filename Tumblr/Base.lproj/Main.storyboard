@@ -69,10 +69,6 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.19729159504886895" green="0.26017560042964355" blue="0.35528724747474738" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleAspectFit" id="vYE-mt-vvA" userLabel="homeContentView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </view>
                             <view contentMode="scaleAspectFit" id="dMf-C0-UG0" userLabel="searchContentView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -82,6 +78,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </view>
                             <view contentMode="scaleAspectFit" id="KEv-kG-w0c" userLabel="trendingtContentView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </view>
+                            <view contentMode="scaleAspectFit" id="vYE-mt-vvA" userLabel="homeContentView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </view>
@@ -128,13 +128,25 @@
                             <view contentMode="scaleToFill" id="apK-aA-McF" userLabel="loginView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gZ2-f0-msf">
+                                        <rect key="frame" x="271" y="30" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loginButtonPresse:" destination="peS-NP-Svc" eventType="touchUpInside" id="6aE-dH-Yk3"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.0" blue="0.018539993599999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="loginView" destination="apK-aA-McF" id="wc1-XZ-oR3"/>
-                        <segue destination="qR7-yd-qXu" kind="modal" identifier="loginStory" id="9zO-Ct-XMI"/>
+                        <segue destination="qR7-yd-qXu" kind="modal" identifier="loginSegue" id="9zO-Ct-XMI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I3K-Dz-S4f" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -146,22 +158,45 @@
         <scene sceneID="aAa-mR-hMb">
             <objects>
                 <viewController storyboardIdentifier="loginStory" id="qR7-yd-qXu" customClass="LoginViewController" customModule="Tumblr" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="PgP-Um-Gld" userLabel="container">
+                    <view key="view" contentMode="scaleToFill" id="PgP-Um-Gld" userLabel="Login View">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="login_form" id="8zH-bO-oOY">
-                                <rect key="frame" x="10" y="180" width="300" height="132"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="1fb-dd-QTp">
-                                <rect key="frame" x="10" y="185" width="300" height="30"/>
+                            <view contentMode="scaleToFill" id="KY1-CU-6MN" userLabel="loginCointainer">
+                                <rect key="frame" x="-10" y="150" width="340" height="172"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <subviews>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="login_form" id="8zH-bO-oOY">
+                                        <rect key="frame" x="20" y="20" width="300" height="132"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hNf-e7-0b9">
+                                        <rect key="frame" x="26" y="114" width="142" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelDidPress:" destination="qR7-yd-qXu" eventType="touchUpInside" id="CcP-Vu-XBD"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" minimumFontSize="17" id="1fb-dd-QTp">
+                                        <rect key="frame" x="30" y="28" width="290" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </view>
                         </subviews>
+                        <color key="backgroundColor" red="0.3197733197" green="0.39768082999999999" blue="0.50196081400000003" alpha="0.75" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextFiled" destination="1fb-dd-QTp" id="XDj-JU-z8h"/>
+                        <outlet property="loginContainer" destination="KY1-CU-6MN" id="eYP-4u-HFF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NDF-aa-cZM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -304,6 +339,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nOg-zb-IqS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="913" y="1050"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="OQ9-uR-r2Q">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="99T-sf-hWX" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5jU-th-QtO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A6A-b5-e58" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>

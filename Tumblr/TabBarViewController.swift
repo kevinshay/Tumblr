@@ -12,6 +12,9 @@ class TabBarViewController: UIViewController, UIViewControllerTransitioningDeleg
 
     var isPresenting: Bool = true
 
+    
+    @IBOutlet weak var containerView: UIView!
+    
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var searchContentView: UIView!
     @IBOutlet weak var accountContentView: UIView!
@@ -158,7 +161,7 @@ class TabBarViewController: UIViewController, UIViewControllerTransitioningDeleg
             removeChildView(currentViewController)
             addChildViewController(searchViewController)
             var searchView = searchViewController.view
-            searchView.frame = searchContentView.frame
+            searchView.frame = contentView.frame
             searchContentView.addSubview(searchView)
             searchViewController.didMoveToParentViewController(self)
             currentViewController = searchViewController
@@ -178,7 +181,7 @@ class TabBarViewController: UIViewController, UIViewControllerTransitioningDeleg
             removeChildView(currentViewController)
             addChildViewController(accountViewController)
             var accountView = accountViewController.view
-            accountView.frame = accountContentView.frame
+            accountView.frame = contentView.frame
             accountContentView.addSubview(accountView)
             accountViewController.didMoveToParentViewController(self)
             currentViewController = accountViewController
@@ -187,7 +190,7 @@ class TabBarViewController: UIViewController, UIViewControllerTransitioningDeleg
             removeChildView(currentViewController)
             addChildViewController(trendingViewController)
             var trendingView = trendingViewController.view
-            trendingView.frame = trendingContentView.frame
+            trendingView.frame = contentView.frame
             trendingContentView.addSubview(trendingView)
             trendingViewController.didMoveToParentViewController(self)
             currentViewController = trendingViewController

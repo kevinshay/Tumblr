@@ -76,4 +76,10 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
             }
         }
     }
+    
+    
+    @IBAction func loginButtonPresse(sender: AnyObject) {
+        performSegueWithIdentifier("loginSegue", sender: self)
+    }
+    
 }
