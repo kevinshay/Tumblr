@@ -12,9 +12,6 @@ class TabBarViewController: UIViewController, UIViewControllerTransitioningDeleg
 
     var isPresenting: Bool = true
 
-    
-    @IBOutlet weak var containerView: UIView!
-    
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var searchContentView: UIView!
     @IBOutlet weak var accountContentView: UIView!
@@ -25,6 +22,8 @@ class TabBarViewController: UIViewController, UIViewControllerTransitioningDeleg
     @IBOutlet weak var composeTabButton: UIButton!
     @IBOutlet weak var accountTabButton: UIButton!
     @IBOutlet weak var trendingTabButton: UIButton!
+    
+    @IBOutlet weak var explorePopup: UIImageView!
     
     var homeViewController: HomeViewController!
     var searchViewController: SearchViewController!
@@ -52,8 +51,12 @@ class TabBarViewController: UIViewController, UIViewControllerTransitioningDeleg
         
         animateDuration = 0.4
         
-        
+    
         // Do any additional setup after loading the view.
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
 
     override func didReceiveMemoryWarning() {
@@ -155,6 +158,16 @@ class TabBarViewController: UIViewController, UIViewControllerTransitioningDeleg
             contentView.addSubview(homeView)
             homeViewController.didMoveToParentViewController(self)
             currentViewController = homeViewController
+            self.explorePopup.hidden = false
+        
+            
+            UIView.animateWithDuration(0.5, animations: { () -> Void in
+                self.explorePopup.transform = CGAffineTransformMakeTranslation(0, 5)
+            })
+            
+            UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.Repeat | UIViewAnimationOptions.Autoreverse, animations: { () -> Void in
+                self.explorePopup.transform = CGAffineTransformMakeTranslation(0, -10)
+            }, completion: nil)
             
         }
         else if (sender as NSObject == searchTabButton) {
@@ -165,6 +178,7 @@ class TabBarViewController: UIViewController, UIViewControllerTransitioningDeleg
             searchContentView.addSubview(searchView)
             searchViewController.didMoveToParentViewController(self)
             currentViewController = searchViewController
+            explorePopup.hidden = true
         }
             
         else if (sender as NSObject == composeTabButton) {
@@ -175,6 +189,8 @@ class TabBarViewController: UIViewController, UIViewControllerTransitioningDeleg
             performSegueWithIdentifier("composeSegue", sender: self)
             composeViewController.didMoveToParentViewController(self)
 //            currentViewController = composeViewController
+            explorePopup.hidden = false
+
         }
             
         else if (sender as NSObject == accountTabButton) {
@@ -185,6 +201,8 @@ class TabBarViewController: UIViewController, UIViewControllerTransitioningDeleg
             accountContentView.addSubview(accountView)
             accountViewController.didMoveToParentViewController(self)
             currentViewController = accountViewController
+            explorePopup.hidden = false
+
         }
         else if (sender as NSObject == trendingTabButton) {
             removeChildView(currentViewController)
@@ -194,6 +212,8 @@ class TabBarViewController: UIViewController, UIViewControllerTransitioningDeleg
             trendingContentView.addSubview(trendingView)
             trendingViewController.didMoveToParentViewController(self)
             currentViewController = trendingViewController
+            explorePopup.hidden = false
+
             
         }
     }

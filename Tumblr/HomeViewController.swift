@@ -12,6 +12,7 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     var isPresenting: Bool = true 
     
+    @IBOutlet weak var homeSpinnerImage: UIImageView!
     @IBOutlet weak var loginView: UIView!
     var loginViewController: LoginViewController!
     
@@ -21,7 +22,13 @@ class HomeViewController: UIViewController, UIViewControllerTransitioningDelegat
         
         var storyboard = UIStoryboard(name: "Main", bundle: nil)
         loginViewController = storyboard.instantiateViewControllerWithIdentifier("loginStory") as LoginViewController
-
+    
+        UIView.animateWithDuration(10.0, delay: 0, options: UIViewAnimationOptions.Repeat | UIViewAnimationOptions.CurveEaseIn | UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+        var rotate = CGFloat(180 * M_PI/180)
+        self.homeSpinnerImage.transform = CGAffineTransformRotate(self.homeSpinnerImage.transform, rotate)
+     }, completion: nil)
+        
+        
         // Do any additional setup after loading the view.
     }
 
